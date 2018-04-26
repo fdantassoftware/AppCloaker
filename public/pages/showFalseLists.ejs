@@ -1,0 +1,65 @@
+<div ng-controller="siteController">
+
+    <div class="container">
+
+
+
+
+        <div ng-controller="showFalseListsController as list">
+
+
+            <table align="center" valign="middle" style="margin-top:30px;">
+                <tr>
+
+
+
+
+                </tr>
+                <tbody ng-repeat="list in lists">
+                <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'"; >
+
+
+
+                    <td>
+
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'";>
+            <div >
+                <div class="im-centered">
+
+                    <div class="row is-flex row-leo">
+
+                        <div id="list-name" class="col-md-3 col-xs-12 col-centered ban-img-holder-1">
+
+                            <p>{{list.name}}</p>
+
+
+
+                        </div>
+                                 <button type="button" class="btn btn-default" ng-click="addToList(list._id)">
+                    <span class="glyphicon glyphicon-plus"></span> Add Items
+                </button>
+                          <button type="button" class="btn btn-default" ng-click="deleteList(list._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button type="button" class="btn btn-default" ng-click="updateList(list._id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+                </span>
+
+                <h3 class="platform-name">{{list.category}}</h3>
+
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+
+
+
+
+        </div>
+    </div>
+</div>

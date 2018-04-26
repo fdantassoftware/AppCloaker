@@ -1,0 +1,69 @@
+<div class="container">
+    
+
+ 
+
+    <v class="col-md-12 col-xs-12">
+<div class="jumbotron text-center">
+    
+
+    
+
+    <div ng-controller="addToListsController">
+    <h2>Available Casinos</h2>
+
+      
+             <table align="center" valign="middle" style="margin-top:30px;">
+ 
+            <tbody ng-repeat="card in cards ">
+            <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'"; >
+           
+            
+
+            <td>
+
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'";></span>
+
+                        
+                <div class="im-centered"> 
+          
+                    <div class="row is-flex row-leo"  >
+                   
+                        <div class="col-md-6 col-xs-6 col-centered ban-img-holder-1">
+                            <a ng-href={{card.link}}  target="_blank"><img class="img-responsive ban-img" height="200px" width="300px" src="{{card.logo}}"></a>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                                     <button type="button" class="btn btn-default" ng-click="deleteCard(card._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove from system
+                </button>
+                <button type="button" class="btn btn-default" ng-click="updateCard(card._id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit Card
+                </button>
+               
+                        </div>
+                        
+                        
+                        <!-- <div class="col-md-4 col-xs-6 col-centered exclusive body h3">
+                            <h3 class="text-center"><strong></strong>{{card.bonusTop}} </h3></div> -->
+                     
+                    </div>
+                     <!--  <button type="button" class="btn btn-default" ng-click="addToList(card._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Add To list -->
+                <!-- </button> -->
+            
+             
+            </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+       
+</div>
+</div>
+
+
+</div>
+
+ </div>

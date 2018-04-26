@@ -1,0 +1,98 @@
+<div class="jumbotron text-center">
+    <h1>Add New Item </h1>
+
+
+
+
+    <!--<p>{{ message }}</p>-->
+
+
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <form ng-submit="addCard()"
+                      style="margin-top:30px;">
+
+                    <div class="form-group" align="center">
+                        <br>
+                        <b> Select Path</b>
+                        <select ng-model="formData.path">
+                            <!--<option ng-repeat="app in apps" value="{{app.name}}">{{x.name}}</option>-->
+                            <option ng-repeat="path in paths" value={{path.type}}>{{path.type}}</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group" align="center">
+                        <br>
+                        <b> Select an App</b>
+                        <select ng-model="formData.appId">
+                            <!--<option ng-repeat="app in apps" value="{{app.name}}">{{x.name}}</option>-->
+                            <option ng-repeat="app in apps" value={{app.name}}>{{app.name}}</option>
+                        </select>
+                    </div>
+
+                    <b>Casino Name</b><br>
+                    <div class="form-group" align="center">
+                        <input ng-model="formData.name" class="form-control"  ng-style="{'width': 500 + 'px'}" required>
+                        </input>
+                    </div>
+                    <div class="form-group" align="center">
+                        <b> Choose image for casino logo </b><br>
+                        <button type="button" class="btn btn-primary" ng-click="pickClicked()">Pick Image</button>
+                        <br>
+                        <b>{{casinoImageName}}</b><br>
+                    </div>
+
+                    <b>Customer Service Rating (0-5)</b><br>
+                    <div class="form-group" align="center">
+                        <input ng-model="formData.customerRating" class="form-control"  ng-style="{'width': 300 + 'px'}" name="input1" ng-change="calculateTotalRating(formData.customerRating)" ng-keydown="$event.keyCode == 8 ? updateSum(formData.customerRating) : null" ng-model-options="{debounce: 500}">
+                        </input>
+                    </div>
+
+                    <b>Reputation Rating (0-5)</b><br>
+                    <div class="form-group" align="center">
+                        <input ng-model="formData.reputationRating" class="form-control"  ng-style="{'width': 300 + 'px'}" name="input2" ng-change="calculateTotalRating(formData.reputationRating)" ng-keydown="$event.keyCode == 8 ? updateSum(formData.reputationRating) : null" ng-model-options="{debounce: 500}">
+                        </input>
+                    </div>
+
+                    <b>Coverage Rating (0-5)</b><br>
+                    <div class="form-group" align="center">
+                        <input ng-model="formData.coverageRating" class="form-control"  ng-style="{'width': 300 + 'px'}" name="input3" ng-change="calculateTotalRating(formData.coverageRating)" ng-keydown="$event.keyCode == 8 ? updateSum(formData.coverageRating) : null" ng-model-options="{debounce: 500}">
+                        </input>
+                    </div>
+
+                    <b>Ease of use Rating (0-5)</b><br>
+                    <div class="form-group" align="center">
+                        <input ng-model="formData.easeRating" class="form-control"  ng-style="{'width': 300 + 'px'}" name="input4" ng-change="calculateTotalRating(formData.easeRating)" ng-keydown="$event.keyCode == 8 ? updateSum(formData.easeRating) : null" ng-model-options="{debounce: 500}">
+                        </input>
+                    </div>
+
+                    <div class="form-group" align="center">
+                        <b>Total Rating (0-5)</b><br>
+                        <div class="form-group" align="center">
+                            <input ng-model="formData.rank" class="form-control"  ng-style="{'width': 300 + 'px'}" >
+                            </input>
+                        </div>
+
+                        <b>Bonus (0-500%)</b><br>
+                        <div class="form-group" align="center">
+                            <input ng-model="formData.bonus" class="form-control"  ng-style="{'width': 300 + 'px'}" >
+                            </input>
+                        </div>
+
+                        <!-- editor -->
+                        <!--<trix-editor ng-model="trix" angular-trix></trix-editor>-->
+                        <p><b>Content for Casino Reviews</br></p>
+                        <div text-angular ng-model="formData.reviewContent" name="demo-editor" ta-text-editor-class="border-around" ta-html-editor-class="border-around" id="html-editor"></div>
+
+
+                        <br>
+
+
+                        <button type="submit" class="btn btn-primary">Add Casino</button>
+                </form>
+
+            </div>
+
+    </div>

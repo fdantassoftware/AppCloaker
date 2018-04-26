@@ -1,0 +1,90 @@
+<div class="container">
+    
+
+ 
+
+    <div ng-controller="cItemsController as list">
+        <table align="center" valign="middle" style="margin-top:30px;">
+         <tr>
+
+  
+ 
+ </tr>
+            <tbody ng-repeat="cItem in cItems | orderBy:'-rating'">
+            <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
+           
+            
+
+            <td>
+
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
+
+             
+     
+        
+
+            <div >
+                <div class="im-centered"> 
+          
+                    <div class="row is-flex row-leo"   >
+                   
+                        <div class="col-md-3 col-xs-12 col-centered ban-img-holder-1">
+                            <a ng-href="{{cItem.image}}"  target="_blank"><img class="img-responsive ban-img" src="{{cItem.image}}"></a>
+                        </div>
+                        <br>
+                        <div class="row">
+                         <div class="col-md-12 col-xs-6 col-centered exclusive body h3">
+                            <h3 class="text-center"><strong></strong> Category {{cItem.category}} </h3></div>
+                       
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-12 col-xs-6 col-centered exclusive body h3">
+                            <h3 class="text-center"><strong></strong> Current link {{cItem.link}} </h3></div>
+                       
+                        </div>
+                        <br>
+                        <div class="row">
+                        <div class="col-md-12 col-xs-6 col-centered exclusive body h3">
+                            <h3 class="text-center"><strong></strong>Offer Title {{cItem.offerTitle}} </h3></div>
+                       
+                         </div>
+                         <br>
+                        <div class="row">
+                         <div class="col-md-12 col-xs-6 col-centered exclusive body h3">
+                            <h3 class="text-center"><strong></strong>Offer Description {{cItem.offerDesc}} </h3></div>
+                       
+                         </div>
+                            
+                            
+          
+                          
+                        </div>
+                      
+                      
+                                             
+                    </div>                                             
+                    </div>
+
+                     <button type="button" class="btn btn-default" ng-click="deleteCItem(cItem._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button type="button" class="btn btn-default" ng-click="updatecItem(cItem._id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+                </span>
+             
+            </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+      
+
+
+    </div>
+
+ </div>

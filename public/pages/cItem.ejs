@@ -1,0 +1,50 @@
+<div class="jumbotron text-center">
+  <h1>Add New Carousel Item </h1>
+
+  <!--<p>{{ message }}</p>-->
+  
+<div ng-controller="cItemController">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <form ng-submit="addCItem()"
+        style="margin-top:30px;">
+
+       
+         <div class="form-group" align="center">
+        <b> Choose Carousel image</b><br>
+       <input type="filepicker" data-fp-apikey="AsnWHOJLpS5qS66mk0Gs0z" onchange="console.log(event.fpfile.url)" ng-model="formData.image">
+        </div>
+        <div class="form-group" align="center">
+        <br>          
+        <b>link </b><br>
+        <div class="form-group" align="center">
+          <input ng-model="formData.link" class="form-control"  ng-style="{'width': 500 + 'px'}" required>
+          </input>
+        </div>
+        <b> Category</b>
+        <select ng-model="formData.category">
+                        <option ng-repeat="x in category" value="{{x.type}}">{{x.type}}</option>
+                        </select>
+                        </div>
+        <b>offerTitle</b><br>
+        <div class="form-group" align="center">
+          <input ng-model="formData.offerTitle" class="form-control"  ng-style="{'width': 500 + 'px'}" required>
+          </input>
+        </div>
+        <b>offerDesc</b><br>
+        <div class="form-group" align="center">
+          <input ng-model="formData.offerDesc" class="form-control"  ng-style="{'width': 500 + 'px'}" required>
+          </input>
+        </div>
+
+
+  <br>
+  
+
+        <button type="submit" class="btn btn-primary">Add Carousel Item</button>
+      </form>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="jumbotron text-center">
+	<h1>Change the page design</h1>
+
+  <!--<p>{{ message }}</p>-->
+	
+<div ng-controller="siteController">
+	<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <form ng-submit="addSite()"
+        style="margin-top:30px;">
+        <h3>Website Design setup...</h3>
+            <b>Is it true path ?  </b><br>
+        <div class="form-group" align="center">
+         <!--  <input ng-model="formData.tp" type="radio"  ng-value="true" ng-style="{'width': 300 + 'px'}" required> -->
+                  <input type="radio" name="obj2.yes" class="form-control" value="true" ng-model="formData.tp"> Yes
+            <input type="radio" name="obj2.no" class="form-control" value="false" ng-model="formData.tp"> No
+          </input>
+        </div>
+        <b>Site Logo</b><br>
+        <div class="form-group" align="center">
+
+        
+           <input type="filepicker" data-fp-apikey="AsnWHOJLpS5qS66mk0Gs0z" onchange="console.log(event.fpfile.url)" ng-model="formData.siteLogo">
+          </input>
+        </div>
+        <b>Site title</b><br>
+        <div class="form-group" align="center">
+          <input ng-model="formData.siteTitle" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+          </input>
+        </div>
+        <b>Banner background</b><br>
+        <div class="form-group" align="center">
+      
+            <input type="filepicker" data-fp-apikey="AsnWHOJLpS5qS66mk0Gs0z" onchange="console.log(event.fpfile.url)" ng-model="formData.bannerBackground">
+    
+          </input>
+        </div>
+        <b>Banner Text</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.bannerText" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+        <b>Banner Heading</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.bannerHeading" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+        <hr>
+        <b>Heading above list</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.contentHeading" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+          <b>paragraph above list</b>
+        <div class="form-group" align="center">
+         <textarea ng-model="formData.contentParagraph" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+         </textarea>
+        </div>
+
+          <b>1st Heading below list</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.contentHeading2" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+          <b>1st paragraph below list</b>
+        <div class="form-group" align="center">
+         <textarea ng-model="formData.contentParagraph2" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+         </textarea>
+        </div>
+
+           <b>2nd Heading below list</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.contentHeading3" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+          <b>2nd paragraph below list</b>
+        <div class="form-group" align="center">
+         <textarea ng-model="formData.contentParagraph3" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+         </textarea>
+        </div>
+
+              <b>3rd Heading below list</b>
+        <div class="form-group" align="center">
+         <input ng-model="formData.contentHeading4" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+        </div>
+          <b>3rd paragraph below list</b>
+        <div class="form-group" align="center">
+         <textarea ng-model="formData.contentParagraph4" class="form-control"  ng-style="{'width': 300 + 'px'}" required>
+         </textarea>
+        </div>
+
+
+
+
+        <div class="row">
+        <div class="col-md-5">
+         <b>Background Image </b><br>
+        <div class="form-group" align="center">
+        <input type="filepicker" data-fp-apikey="AsnWHOJLpS5qS66mk0Gs0z" onchange="console.log(event.fpfile.url)"  ng-model="formData.backgroundImage">
+    
+          </input>
+        </div>
+        </div>
+        <div class="col-md-2">
+        <h1>OR</h1>
+        </div>
+            <div class="col-md-5">
+             <div class="form-group" align="center">
+    <color-picker colorpicker="rgba" options="options" ng-model="formData.backgroundColor">
+</color-picker>
+<br>
+<input type="text" options="options"
+       ng-model="formData.backgroundColor"
+       ng-init="formData.backgroundColor = '#f05a28'">
+  
+      <br>
+
+</div>
+
+            </div>
+        </div>
+
+  
+
+
+
+
+        <button type="submit" class="btn btn-primary">Add Design</button>
+      </form>
+
+    </div>
+  </div>
+</div>

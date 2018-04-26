@@ -1,0 +1,77 @@
+<div class="jumbotron text-center">
+    <h2>Setting Up User access</h2>
+
+    <!--<p>{{ message }}</p>-->
+
+    <div ng-controller="rulesController">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+                <form ng-submit="saveConfig()"
+                      style="margin-top:30px;">
+
+                    <h3>Rules</h3>
+
+                    <div class="form-group" align="center">
+
+                        <label>
+                            <input ng-model="formData.countryCheck" type="checkbox" name="countryCheck" ng-value="country">
+                            country Check
+                        </label>
+                    </div>
+
+
+                    <div class="form-group" align="center">
+
+                        <label>
+                            <input ng-model="formData.timeCheck" type="checkbox" name="timeCheck" ng-value="time">
+                            time Check
+                        </label>
+                    </div>
+
+
+
+
+
+
+                    <!--<div class="form-group" align="center">-->
+
+                        <!--<label>-->
+                            <!--<input ng-model="formData.geoCheck" type="checkbox" name="geoCheck" ng-value="'true'">-->
+                            <!--geo Check-->
+                        <!--</label>-->
+
+                    <!--</div>-->
+
+
+                    <div class="form-group" align="center">
+
+                        <label>
+                            <input ng-model="formData.ispCheck" type="checkbox" name="ispCheck" ng-value="isp">
+                            isp Check
+                        </label>
+
+                    </div>
+
+
+                    <div class="form-group" align="center">
+                        <br>
+                        <b> Select Target App</b>
+                        <select ng-model="formData.appId" ng-change="optionChanged()" >
+                            <!--<option ng-repeat="app in apps" value="{{app.name}}">{{x.name}}</option>-->
+                            <option ng-repeat="app in apps" value={{app.name}}>{{app.name}}</option>
+                        </select>
+                    </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>

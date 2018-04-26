@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-6 col-xs-6">
+        <div class="jumbotron text-center">
+
+
+
+
+            <div ng-controller="addtofalselistController">
+                <h1>{{list.name}}</h1>
+
+                <table align="center" valign="middle" style="margin-top:30px;">
+
+                    <tbody ng-repeat="card in listActiveItems "  >
+
+                    <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'"; >
+
+
+
+                        <td>
+
+                            <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'";></span>
+
+
+                            <div class="im-centered">
+
+                                <div class="row is-flex row-leo" style="background-color: {{card.color}}" ng-style="{'background-color':'{{card.color}}'}"  >
+
+                                    <div class="col-md-6 col-xs-6 col-centered ban-img-holder-1">
+                                        <a ng-href=http://{{card.link}}  target="_blank"><img class="img-responsive ban-img" height="200px" width="300px" src="{{card.logo}}"></a>
+                                        <!--          <h3>Top Bonus is</h3>
+                                                 <p> {{card.bonusTop}}</p>
+                                                  <p>Top Bonus is {{card.bonusMiddle}}</p>
+                                                  <p>Lower Bonus is {{card.bonusLower}}</p> -->
+
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" class="btn btn-default"  ng-if="$index != listActiveItems.length -1"  ng-click="move(listActiveItems,$index,1)">
+                                            <span class="glyphicon glyphicon-remove"></span> Move Down
+                                        </button>
+
+
+                                        <button type="button" class="btn btn-default" ng-click="deletFromList(card[0]._id)">
+                                            <span class="glyphicon glyphicon-remove"></span> Remove from list
+                                        </button>
+                                        <!--  <button type="button" class="btn btn-default" ng-click="updateCard(card._id)">
+                                             <span class="glyphicon glyphicon-edit"></span> Edit the card
+                                         </button> -->
+                                        <button type="button" class="btn btn-default"ng-if="$index != 0"ng-click="move(listActiveItems,$index,-1)">
+                                            <span class="glyphicon glyphicon-remove"></span> Move Up
+                                        </button>
+                                    </div>
+
+
+                                    <!-- <div class="col-md-4 col-xs-6 col-centered exclusive body h3">
+                                        <h3 class="text-center"><strong></strong>{{card.bonusTop}} </h3></div> -->
+
+                                </div>
+                                <hr>
+
+
+
+                        </td>
+
+                    </tr>
+                    <button type="button" class="btn btn-default" ng-click="saveListOrder(listActiveItems)">
+                        <span class="glyphicon glyphicon-remove"></span> Save list order
+                    </button>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-md-6 col-xs-6">
+        <div class="jumbotron text-center">
+
+
+
+
+            <div ng-controller="addtofalselistController">
+                <h2>Available Casinos</h2>
+
+
+                <table align="center" valign="middle" style="margin-top:30px;">
+
+                    <tbody ng-repeat="card in cards ">
+                    <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'"; >
+
+
+
+                        <td>
+
+                            <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign='middle'";></span>
+
+
+                            <div class="im-centered">
+
+                                <div class="row is-flex row-leo" style="background-color: {{card.color}}" ng-style="{'background-color':'{{card.color}}'}"  >
+
+
+                                    <div class="col-md-6 col-xs-6 col-centered ban-img-holder-1">
+                                        <p>{{card.name}}</p>
+                                        <a ng-href=http://{{card.link}}  target="_blank"><img class="img-responsive ban-img" height="200px" width="300px" src="{{card.logo}}"></a>
+
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <button type="button" class="btn btn-default" ng-click="addToList(card._id)">
+                                            <span class="glyphicon glyphicon-remove"></span> Add To list
+                                        </button>
+                                        <button type="button" class="btn btn-default" ng-click="deleteCard(card._id)">
+                                            <span class="glyphicon glyphicon-remove"></span> Remove from system
+                                        </button>
+
+                                    </div>
+
+
+                                </div>
+                                <hr>
+
+
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div ng-controller="siteController">
+    <div class="jumbotron text-center">
+        <h1>Update App </h1>
+
+        <!--<p>{{ message }}</p>-->
+
+        <div ng-controller="updateAppController">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+
+                    <form ng-submit="updateApp()"
+                          style="margin-top:30px;">
+                        <b>AppId</b><br>
+                        <br>
+                        <div class="form-group" align="center">
+                            <input ng-model="formData.name" class="form-control"  ng-style="{'width': 500 + 'px'}" placeholder={{appId}}  required>
+                            </input>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

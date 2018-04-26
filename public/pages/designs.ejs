@@ -1,0 +1,72 @@
+<div class="container">
+    
+
+ 
+
+    <div ng-controller="siteController as list">
+        <table align="center" valign="middle" style="margin-top:30px;">
+         <tr>
+
+  
+ 
+ </tr>
+            <tbody ng-repeat="design in design ">
+            <tr style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle"; >
+           
+            
+
+            <td>
+
+                <span style="height:55px; font-size:20px; margin-left:20px; margin-right:20px; valign="middle";>
+
+             
+     
+        
+
+            <div >
+                <div class="im-centered">           
+                    <div class="row is-flex row-leo"   >
+                   
+                       
+                        
+                        
+                        <div class="col-md-12 col-xs-6 col-centered exclusive body h3">
+                            <p class="text-center"><strong>{{design.siteTitle}}</strong> </p>
+
+                            <p class="text-center"><strong>{{design.bannerHeading}}</strong> </p>
+
+                            <p class="text-center"><strong>{{design.bannerText}}</strong> </p>
+
+                            </div>
+                        
+                      
+                                             
+                    </div>
+
+                  <br>
+                            
+                                             
+                    </div>
+
+                     <button type="button" class="btn btn-default" ng-click="deleteDesign(design._id)">
+                    <span class="glyphicon glyphicon-remove"></span> Remove
+                </button>
+                <button type="button" class="btn btn-default" ng-click="updateDesign(design._id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+                </span>
+             
+            </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+      
+
+
+    </div>
+
+ </div>
