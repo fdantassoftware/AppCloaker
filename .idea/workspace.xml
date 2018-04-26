@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56448e68-f522-41e5-89e8-21cc66a64121" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-    </list>
+    <list default="true" id="56448e68-f522-41e5-89e8-21cc66a64121" name="Default" comment="" />
     <ignored path="Donations4.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1692,12 +1690,12 @@
       <workItem from="1522915617909" duration="509000" />
       <workItem from="1522921622564" duration="5152000" />
       <workItem from="1523283888285" duration="1710000" />
-      <workItem from="1524733854724" duration="10384000" />
+      <workItem from="1524733854724" duration="10616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227484000" />
+    <option name="totallyTimeSpent" value="227716000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
