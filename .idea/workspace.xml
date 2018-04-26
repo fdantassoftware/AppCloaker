@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56448e68-f522-41e5-89e8-21cc66a64121" name="Default" comment="" />
+    <list default="true" id="56448e68-f522-41e5-89e8-21cc66a64121" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+    </list>
     <ignored path="Donations4.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +21,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="casinos.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="casinos.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/casinos.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
@@ -69,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="136" column="18" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
+            <state relative-caret-position="449">
+              <caret line="30" column="90" lean-forward="true" selection-start-line="30" selection-start-column="90" selection-end-line="30" selection-end-column="90" />
             </state>
           </provider>
         </entry>
@@ -116,7 +118,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>findone</find>
       <find>post</find>
       <find>updateApp</find>
       <find>card.log</find>
@@ -146,6 +147,7 @@
       <find>updatecard</find>
       <find>getRulesFromAppId</find>
       <find>addrules</find>
+      <find>addrule</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -201,10 +203,10 @@
         <option value="$PROJECT_DIR$/public/javascripts/angularApp.js" />
         <option value="$PROJECT_DIR$/views/index.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/controllers/updateAppController.js" />
-        <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/public/pages/updatecard.ejs" />
         <option value="$PROJECT_DIR$/public/javascripts/controllers/updateCardController.js" />
         <option value="$PROJECT_DIR$/routes/casinos.js" />
+        <option value="$PROJECT_DIR$/app.js" />
       </list>
     </option>
   </component>
@@ -1690,12 +1692,12 @@
       <workItem from="1522915617909" duration="509000" />
       <workItem from="1522921622564" duration="5152000" />
       <workItem from="1523283888285" duration="1710000" />
-      <workItem from="1524733854724" duration="10097000" />
+      <workItem from="1524733854724" duration="10384000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="227197000" />
+    <option name="totallyTimeSpent" value="227484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -2101,17 +2103,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="136" column="18" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/casinos.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="495">
           <caret line="146" column="37" lean-forward="true" selection-start-line="146" selection-start-column="37" selection-end-line="146" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="30" column="90" lean-forward="true" selection-start-line="30" selection-start-column="90" selection-end-line="30" selection-end-column="90" />
         </state>
       </provider>
     </entry>
