@@ -24,6 +24,11 @@ app.controller('showFalseListsController', ['$scope', '$location', '$http', func
     }
 
 
+    $scope.updateList = function(id) {
+          $location.path('/editfalselist/' + id);
+
+    }
+
 
 
     $scope.deleteList = function(id) {

@@ -27,8 +27,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }; 
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
 
 
 app.listen(process.env.PORT || 6400, function(){
@@ -45,6 +45,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 
@@ -54,7 +55,11 @@ app.use('/', routes);
 app.post('/getAllLists', cards.getAllLists);
 
 app.post('/getAllItems', cards.getAllItems);
+app.post('/getOneList', cards.getOneList);
+app.post('/editlist', cards.editlist);
 
+app.post('/getOneFalseList', cards.getOneFalseList);
+app.post('/editFalseList', cards.editFalseList);
 
 
 app.get('/cards', cards.findAll);

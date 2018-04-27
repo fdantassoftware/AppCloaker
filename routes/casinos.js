@@ -68,7 +68,7 @@ function showFalseList(appId, req, res) {
             console.log('Error while fetching data ' + err);
 
         } else {
-            console.log('Data retrieved  ' + data);
+
 
             if (data != null) {
                 res.json(data);
@@ -81,10 +81,10 @@ function showTrueList(appId, req, res) {
 
     List.find({'appId': appId, 'category':req.body.platform}, function (err, data) {
         if (err) {
-            console.log('Error while fetching data ' + err);
+            res.send(err);
 
         } else {
-            console.log('Data retrieved  ' + data);
+
 
             if (data != null) {
 
@@ -111,9 +111,13 @@ router.getAllLists = function (req, res) {
 
     var data = req.body;
     // TODO change that to be req.ip when ready to production
-    var ip = '176.61.97.231';
-    console.log('My Ip is ' + ip);
-    console.log("My data from Client is " + JSON.stringify(data));
+    // var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    // if (ip.substr(0, 7) == "::ffff:") {
+    //   ip = ip.substr(7)
+    // }
+    var ip = req.body.ip;
+
+
 
     var isSimulator = req.body.isSimulator;
 
@@ -131,12 +135,11 @@ router.getAllLists = function (req, res) {
 
                         if (rules != null) {
 
-                            console.log("Rules " + rules[0]);
-
                             if(typeof rules[0] !== "undefined") {
-
+                              if (rules[0].rules.length === 0) {
+                                path = false;
+                              } else {
                                 for (var i = 0; i < rules[0].rules.length; i++) {
-
                                     if (rulesArray.hasOwnProperty(rules[0].rules[i])) {
 
                                         if (rulesArray[rules[0].rules[i]] === false) {
@@ -147,10 +150,11 @@ router.getAllLists = function (req, res) {
                                     }
 
                                 }
+                              }
+
                             } else {
                                 path = false;
                             }
-
 
                             if (path) {
                                 console.log("Showing true");
@@ -260,7 +264,7 @@ router.findAllApps = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            console.log(lists);
+
             res.json(lists);
         }
     });
@@ -285,21 +289,20 @@ router.updateApp = function (req, res) {
 
     App.find({'_id': req.body.id}, function (err, data) {
         if (err) {
-            console.log("------- ERROR IS " + err);
+          res.send(err);
         } else {
             var app = data[0];
             app.name = req.body.name;
             app.save(function (err, data) {
                 if (err) {
-                    console.log("------- ERROR IS " + err);
+                    res.send(err);
                 } else {
-                    console.log("------- data " + data);
+
                 }
             })
         }
 
     });
-
 
 }
 
@@ -312,7 +315,7 @@ router.findAllIsps = function (req, res) {
         if (err) {
             res.json({message: 'List NOT Found!', errmsg: err});
         } else {
-            console.log(isp);
+
             res.json(isp);
         }
 
@@ -322,7 +325,7 @@ router.findAllIsps = function (req, res) {
 router.addIsps = function (req, res) {
     ISP.find({'appId': req.body.appId}, function (err, data) {
         if (err) {
-            console.log("------- ERROR IS " + err);
+            res.send(err);
         } else {
 
             if (data.length > 0) {
@@ -332,7 +335,7 @@ router.addIsps = function (req, res) {
                 isp.kws = isp.kws.unique();
                 isp.save(function (err, data) {
                     if (err) {
-                        console.log("------- ERROR IS " + err);
+                        res.send(err);
                     } else {
                         res.json({message: 'list Added!', data: isp});
                     }
@@ -369,7 +372,7 @@ router.addCountries = function (req, res) {
 
     Country.find({'appId': req.body.appId}, function (err, data) {
         if (err) {
-            console.log("------- ERROR IS " + err);
+            res.send(err);
         } else {
 
             if (data.length > 0) {
@@ -379,7 +382,7 @@ router.addCountries = function (req, res) {
                 country.name = country.name.unique();
                 country.save(function (err, data) {
                     if (err) {
-                        console.log("------- ERROR IS " + err);
+                        res.send(err);
                     } else {
                         res.json({message: 'list Added!', data: country});
                     }
@@ -430,7 +433,7 @@ router.addRule = function (req, res) {
 
     Rule.find({'appId': req.body.appId}, function (err, data) {
         if (err) {
-            console.log("------- ERROR IS " + err);
+          res.send(err);
         } else {
 
             if (data.length > 0) {
@@ -464,7 +467,7 @@ router.addRule = function (req, res) {
 
                 rule.save(function (err, data) {
                     if (err) {
-                        console.log("------- ERROR IS " + err);
+                        res.send(err);
                     } else {
                         res.json({message: 'list Added!', data: rule});
                     }
@@ -515,12 +518,11 @@ router.getAllRules = function(req, res) {
 
     Rule.find({'appId':req.body.appId}, function (err, rules) {
         if (err) {
-            console.log("--------------- error")
             res.send(err);
         } else {
 
-            console.log("--------------- Hey " + req.body.appId);
-            console.log(rules);
+
+
             res.json(rules);
         }
     });
@@ -545,7 +547,7 @@ router.deleteApp = function (req, res) {
 
 router.AddFalseList = function (req, res) {
 
-    console.log("Going to save false lists")
+
 
     var falseList = new FalseList();
     falseList.name = req.body.name;
@@ -595,7 +597,7 @@ router.findAllLFalseLists = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            console.log(lists);
+
             res.json(lists);
         }
     });
@@ -607,7 +609,7 @@ router.updateFalseList = function(req, res) {
         if (err)
             res.send(err);
         else {
-            console.log("Value of list name is " + req.body.list);
+
             list.name = req.body.name;
             list.category = req.body.category;
             list.icon = req.body.icon;
@@ -617,7 +619,7 @@ router.updateFalseList = function(req, res) {
 
             var id = req.params.id;
 
-            console.log("Value of list.icon is" + list.icon + "value of req.body" + req.body.icon);
+
 
             FalseList.findByIdAndUpdate(id, {
                 $set: {
@@ -652,8 +654,7 @@ router.updateFalseListId = function(req, res) {
             res.json({message: 'List NOT Found!', errmsg: err});
         } else {
 
-            console.log("----------------Data " + list[0].cardIds);
-            console.log("-------------- Casino ID " + req.body.casinoId);
+
 
 
             for (var i = 0; i < list[0].cardIds.length; i++) {
@@ -665,7 +666,7 @@ router.updateFalseListId = function(req, res) {
                 list[0].save(function (err) {
 
                     if (err) {
-                        console.log(err);
+                        res.send(err);
                     } else {
                         console.log("List Ids updated");
                     }
@@ -702,7 +703,7 @@ router.updateListId = function(req, res) {
                     list[0].save(function (err) {
 
                         if (err) {
-                            console.log(err);
+                            res.send(err);
                         } else {
                             console.log("List Ids updated");
                         }
@@ -733,14 +734,14 @@ router.getAllListsByCountry = function (req, res) {
     const country = req.body.country
     List.find({"country": country}, function (err, list) {
         if (err)
-            console.log(err);
+            res.send(err);
         else if (list.length > 0) {
             res.json(list);
 
         } else {
             List.find({"country": "Def"}, function (error, defaultList) {
                 if (error) {
-                    console.log('error')
+                    res.send(err);
                 } else {
                     res.json(defaultList);
                 }
@@ -767,7 +768,7 @@ router.findAll = function (req, res) {
         if (err) {
             res.send(err);
         } else {
-            console.log(cards);
+
             res.json(cards);
         }
     });
@@ -787,7 +788,7 @@ router.findAllList = function (req, res) {
 }
 
 function CallWebAPI(ip, tm, resglobal, ov, callback) {
-    console.log('the value of overide is ' + ov);
+
     if (ov) {
         Casino.find(function (err, casinos) {
             if (err) {
@@ -832,18 +833,18 @@ function CallWebAPI(ip, tm, resglobal, ov, callback) {
                     // console.log(moment(time, format).tz(vis_timezone).format(format)+ "in last moment clonsole log");
                     var t = moment(time, format).tz(vis_timezone).format(format);
                     var tHours = moment().tz(vis_timezone).format('hh');
-                    console.log("hours" + tHours);
+
 
 
                     var theStringMinusOne = tm.slice(0, -5);
-                    console.log(theStringMinusOne);
+
                     var dateObj = new Date(Date.parse(theStringMinusOne));
 
                     var apiHour = moment(dateObj).format('hh');
 
 
                     var diff = tHours - apiHour;
-                    console.log(diff);
+
 
 
                     if (diff > 1 || diff < -1) {
@@ -859,30 +860,30 @@ function CallWebAPI(ip, tm, resglobal, ov, callback) {
                         "AliantMTS", "AllstreamVideotron", "LteeGlobalive", "Wireless Management Corp", "Virgin Media Ireland"
                     ];
                     for (var i = isps.length - 1; i >= 0; i--) {
-                        console.log(vis_isp);
+
                         if (isps[i] === vis_isp) {
 
-                            console.log("the isp was matched at " + i + "with isp" + isps[i]);
+
                             ruleISP = true;
 
                         }
                     }
                     var countryList = ["se2", "ie2", "ca2", "nz2", "ch2", "at2", "de2", "fi2", "au2"];
 
-                    console.log(vis_country);
+
                     for (var i = countryList.length - 1; i >= 0; i--) {
                         if (countryList[i] == vis_country.toLowerCase()) {
-                            console.log("the country was matched at " + i + "with country" + countryList[i]);
+
                             ruleCountry = true;
                         }
                     }
 
 
                     if (ruleISP && ruleTime && ruleCountry) {
-                        console.log("true path");
+
                         path = true;
                     }
-                    console.log(path);
+
                     callback(resglobal);
 
 
@@ -957,7 +958,7 @@ router.addList = function (req, res) {
     };
 
 
-    console.log('Adding list: ' + JSON.stringify(list));
+
 
     // Save the list and check for errors
     list.save(function (err) {
@@ -966,6 +967,107 @@ router.addList = function (req, res) {
 
         res.json({message: 'list Added!', data: list});
     });
+
+}
+
+
+router.getOneList = function(req, res) {
+  List.find({'_id':req.body.id}, function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.json(data);
+    }
+  })
+}
+
+router.getOneFalseList = function(req, res) {
+  FalseList.find({'_id':req.body.id}, function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.json(data);
+    }
+  })
+}
+
+
+
+
+router.editlist = function(req, res) {
+
+  List.find({'_id':req.body.id}, function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      var list = data[0];
+      list.name = req.body.name;
+      list.description = req.body.description;
+      list.nameOfCarouselItem = req.body.nameOfCarouselItem;
+      list.appId = req.body.appId;
+      list.category = req.body.category;
+      if (req.body.icon != '') {
+        list.icon = req.body.icon;
+      }
+      if (req.body.carouselImageUrl != '') {
+        list.carouselItem.imageUrl = req.body.carouselImageUrl;
+      }
+
+
+      list.save(function(error, data) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(data);
+        }
+      })
+    }
+
+  })
+
+
+
+
+
+
+}
+
+
+router.editFalseList = function(req, res) {
+
+  FalseList.find({'_id':req.body.id}, function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      var list = data[0];
+      list.name = req.body.name;
+      list.description = req.body.description;
+      list.nameOfCarouselItem = req.body.nameOfCarouselItem;
+      list.appId = req.body.appId;
+      list.category = req.body.category;
+      if (req.body.icon != '') {
+        list.icon = req.body.icon;
+      }
+      if (req.body.carouselImageUrl != '') {
+        list.carouselItem.imageUrl = req.body.carouselImageUrl;
+      }
+
+
+      list.save(function(error, data) {
+        if (error) {
+          res.send(error);
+        } else {
+          res.send(data);
+        }
+      })
+    }
+
+  })
+
+
+
+
+
 
 }
 router.addLayout = function (req, res) {
@@ -977,7 +1079,7 @@ router.addLayout = function (req, res) {
     layout.bonusTextLower = req.body.bonusTextLower;
     layout.outLink = req.body.outLink;
 
-    console.log('Adding layout: ' + JSON.stringify(layout));
+
 
     // Save the layout and check for errors
     layout.save(function (err) {
@@ -990,8 +1092,7 @@ router.addLayout = function (req, res) {
 }
 router.addCard = function (req, res) {
 
-    console.log(req.body.path);
-    console.log(req.body.appId);
+
     var card = new Card();
     card.logo = req.body.logo;
     card.bonus = req.body.bonus;
@@ -1007,7 +1108,7 @@ router.addCard = function (req, res) {
     card.appId = req.body.appId;
 
 
-    console.log('Adding Card: ' + JSON.stringify(card));
+
 
     // Save the card and check for errors
     card.save(function (err) {
@@ -1052,9 +1153,9 @@ router.deleteLayout = function (req, res) {
 router.updateLayout = function (req, res) {
 
     Layout.findById(req.params.id, function (err, layout) {
-        if (err)
-            res.send(err);
-        else {
+        if (err) {
+          res.send(err);
+        } else {
 
             layout.imageUrl = req.body.imageUrl;
             layout.bonusText = req.body.bonusText;
@@ -1080,7 +1181,7 @@ router.updateLayout = function (req, res) {
 
 
         }
-        ;
+
     });
 
 }
@@ -1090,7 +1191,7 @@ router.updateList = function (req, res) {
         if (err)
             res.send(err);
         else {
-            console.log("Value of list name is " + req.body.list);
+
             list.name = req.body.name;
             list.category = req.body.category;
             list.icon = req.body.icon;
@@ -1100,7 +1201,7 @@ router.updateList = function (req, res) {
 
             var id = req.params.id;
 
-            console.log("Value of list.icon is" + list.icon + "value of req.body" + req.body.icon);
+
 
             List.findByIdAndUpdate(id, {
                 $set: {
@@ -1157,8 +1258,6 @@ router.updateCard = function (req, res) {
     })
 
 
-
-
 }
 
 router.getCard = function (req, res) {
@@ -1196,7 +1295,7 @@ router.findAllCItems = function (req, res) {
 }
 router.addCItem = function (req, res) {
 
-    console.log('Get into routes casinos ');
+
     var cItem = new CItems();
     cItem.link = req.body.link;
     cItem.category = req.body.category;
@@ -1205,7 +1304,7 @@ router.addCItem = function (req, res) {
     cItem.offerDesc = req.body.offerDesc;
 
 
-    console.log('Adding cItem: ' + JSON.stringify(cItem) + "Req body desc is " + req.body.offerDesc);
+
 
     // Save the card and check for errors
     cItem.save(function (err) {
@@ -1232,14 +1331,14 @@ router.updateCItem = function (req, res) {
         if (err)
             res.send(err);
         else {
-            console.log("Value of casino name is " + req.body.cItem);
+
             cItem.link = req.body.link;
             cItem.category = req.body.category;
             cItem.image = req.body.image;
             cItem.offerTitle = req.body.offerTitle;
             cItem.offerDesc = req.body.offerDesc;
             var id = req.params.id;
-            console.log("Value of cItem name after setting is " + cItem.CItems);
+
 
             Card.findByIdAndUpdate(id, {
                 $set: {
@@ -1263,24 +1362,6 @@ router.updateCItem = function (req, res) {
 }
 
 
-
-//  Cloaker Rules
-
-// function decider(callback) {
-//
-//     if (rulesArray.length === resultsArray.length && rulesArray.length > 0) {
-//         if (resultsArray.includes(false)) {
-//             callback(false);
-//
-//         } else {
-//             callback(true);
-//         }
-//     }else if(rulesArray.length ==0){
-//         callback(false);
-//     }
-//
-//
-// }
 
 function checkRules(ipData, deviceTime, appId, callback) {
 
@@ -1311,80 +1392,7 @@ function checkRules(ipData, deviceTime, appId, callback) {
     })
 
 
-    // getRulesFromAppId(appId, function(rules) {
-    // var deciderResult;
-    //
-    //
-    //     if (rules != null) {
-    //
-    //         if (rules[0].time) {
-    //             rulesArray.push('time');
-    //         }
-    //
-    //
-    //         if (rules[0].country) {
-    //             rulesArray.push('country');
-    //         }
-    //
-    //
-    //         if (rules[0].isp) {
-    //             rulesArray.push('isp');
-    //         }
-    //
-    //
-    //         if (rulesArray.includes('time')) {
-    //
-    //
-    //             checkTime(ipData, deviceTime, function(result) {
-    //
-    //                 resultsArray.push(result);
-    //                 deciderResult = decider(callback);
-    //
-    //
-    //             })
-    //
-    //
-    //
-    //         }
-    //
-    //
-    //         if (rulesArray.includes('country')) {
-    //
-    //             checkCountry(ipData, appId, function(result) {
-    //                 var test = result;
-    //                 console.log(result);
-    //                 resultsArray.push(result);
-    //                 deciderResult = decider(callback);
-    //             })
-    //
-    //
-    //
-    //
-    //         }
-    //
-    //
-    //         if (rulesArray.includes('isp')) {
-    //
-    //             checkIsp(ipData, appId, function(result) {
-    //                 resultsArray.push(result);
-    //                 deciderResult =  decider(callback);
-    //             })
-    //
-    //
-    //
-    //         }
-    //
-    //
-    //         if(rulesArray.length == 0){
-    //             callback(false);
-    //         }
-    //
-    //
-    //     }else{
-    //         callback(false);
-    //     }
-    //
-    // })
+
 
 }
 
@@ -1394,6 +1402,9 @@ function checkTime(ipData, deviceTime, callback) {
 
     var deviceHours = deviceTime[0];
     var deviceMinutes = deviceTime[1];
+
+    console.log(ipData.clientHours);
+    console.log(deviceHours);
 
     if (parseInt(ipData.clientHours) == parseInt(deviceHours)) {
 
@@ -1486,10 +1497,10 @@ function getCountryFromAppID(appId, callback) {
 
     App.find({"name": appId}, function (err, app) {
         if (err) {
-            console.log(err);
+            res.send(err);
             callback(null);
         } else {
-            console.log("--------------------- APP DATA IS " + app);
+
             callback(app[0].countryName);
         }
 
@@ -1500,7 +1511,7 @@ function getCountryFromAppID(appId, callback) {
 function getAllCountriesFromAppId(appId, callback) {
     Country.find({"appId": appId}, function (err, countries) {
         if (err) {
-            console.log(err);
+            res.send(err);
             callback(null)
         } else {
             callback(countries);
@@ -1513,7 +1524,7 @@ function getAllCountriesFromAppId(appId, callback) {
 function getAllIspsFromAppId(appId, callback) {
     ISP.find({"appId": appId}, function (err, isps) {
         if (err) {
-            console.log(err);
+            res.send(err);
             callback(null)
         } else {
             callback(isps);
@@ -1525,7 +1536,7 @@ function getAllIspsFromAppId(appId, callback) {
 function getRulesFromAppId(appId, callback) {
     Rule.find({"appId": appId}, function (err, rules) {
         if (err) {
-            console.log("Rules error " + err);
+            res.send(err);
             callback(null);
         } else {
             callback(rules);

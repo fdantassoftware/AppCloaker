@@ -8,6 +8,7 @@ var ListSchema = new mongoose.Schema({
     icon: String,
     description: String,
     appId: String,
+    nameOfCarouselItem: String,
     cardIds: { type: Array, default: void 0 },
 
     carouselItem: {
@@ -27,4 +28,3 @@ ListSchema.pre('save', function(next){
 });
 
 module.exports = mongoose.model('lists', ListSchema);
-

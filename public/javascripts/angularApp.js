@@ -10,6 +10,12 @@ app.config(function($routeProvider) {
                 controller  : 'mainController'
             })
 
+            .when('/updateList/:id/', {
+                templateUrl: 'pages/editlist.ejs',
+                controller : 'editListController'
+            })
+
+
             .when('/addToFalseList/:id/', {
                 templateUrl: 'pages/addtofalselist.ejs',
                 controller : 'addtofalselistController'
@@ -70,7 +76,7 @@ app.config(function($routeProvider) {
                 controller  : 'coffeeController'
             })
 
-           
+
              // route for the coffees page
             .when('/cards', {
                 templateUrl : 'pages/coffees.ejs',
@@ -89,13 +95,10 @@ app.config(function($routeProvider) {
 
               // route for the coffee page
             .when('/lists', {
-                templateUrl : 'pages/.ejs',
+                templateUrl : 'pages/lists.ejs',
                 controller  : 'listsController'
             })
-            .when('/updatelist/:id', {
-                templateUrl: 'pages/updateList.ejs',
-                controller : 'updateList'
-            })
+
             .when('/addToList/:id/', {
                 templateUrl: 'pages/addToList.ejs',
                 controller : 'addToListsController'
@@ -139,13 +142,13 @@ app.config(function($routeProvider) {
             //route for user login
             .when('/login', {
                 templateUrl: '*/views/login.ejs'
-                
+
             })
 
             //route for signup
             .when('/signup', {
                 templateUrl: 'pages/signup.ejs'
-                
+
             })
 
             // route for the about page
@@ -160,9 +163,3 @@ app.config(function($routeProvider) {
                 controller  : 'contactController'
             });
     });
-
-
-  
-  
-
-
